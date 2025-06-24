@@ -1,0 +1,156 @@
+---
+// Componente de estrellas aleatorias para el banner
+const STAR_COUNT = 150;
+const stars = Array.from({ length: STAR_COUNT }, (_, i) => {
+  // Posición aleatoria en % (para cubrir todo el banner)
+  const top = Math.random() * 100;
+  const left = Math.random() * 100;
+  // Tamaño aleatorio entre 1px y 3px
+  const size = 1 + Math.random() * 2;
+  // Opacidad aleatoria entre 0.3 y 1
+  const opacity = 0.3 + Math.random() * 0.7;
+  // Duración de parpadeo aleatoria entre 2s y 4s
+  const duration = 2 + Math.random() * 2;
+  // Retardo aleatorio para que no parpadeen igual
+  const delay = Math.random() * 2;
+  return { top, left, size, opacity, duration, delay };
+});
+
+// Delays aleatorios para las estrellas fugaces
+const shootingDelay1 = Math.random() * 6 + 4; // entre 4 y 10 segundos
+const shootingDelay2 = Math.random() * 8 + 6; // entre 6 y 14 segundos
+const shootingDelay3 = Math.random() * 10 + 8; // entre 8 y 18 segundos
+---
+<style is:global>
+.stars-random {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+.star {
+  position: absolute;
+  border-radius: 50%;
+  background: white;
+  box-shadow: 0 0 6px 2px rgba(255,255,255,0.15);
+  will-change: opacity;
+  animation-name: blink-star;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+@keyframes blink-star {
+  0% { opacity: 1; }
+  50% { opacity: 0.3; }
+  100% { opacity: 1; }
+}
+.shooting-star {
+  position: absolute;
+  top: 50%;
+  left: 100%; /* Positioned at the right edge to start */
+  width: 120px;
+  height: 2px;
+  background: linear-gradient(-90deg, rgba(255, 255, 255, 0), white);
+  opacity: 0;
+  filter: blur(1px);
+  border-radius: 2px;
+  pointer-events: none;
+  z-index: 2;
+  /* Use transform for animation and hint the browser for optimization */
+  will-change: transform, opacity;
+  animation: shooting-horizontal 1.2s linear forwards;
+}
+
+.shooting-star.high {
+  top: 30%;
+  width: 150px;
+  height: 2.5px;
+  animation-duration: 1.5s;
+}
+
+.shooting-star.higher {
+  top: 15%;
+  width: 180px;
+  height: 3px;
+  animation-duration: 1.8s;
+  opacity: 0;
+}
+
+@keyframes shooting-horizontal {
+  0% {
+    /* Start off-screen to the right and invisible */
+    transform: translateX(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    /* Move across the entire viewport and disappear */
+    transform: translateX(calc(-100vw - 100%));
+    opacity: 0;
+  }
+}
+</style>
+
+<div class="stars-random" id="stars-area">
+  {stars.map((star) => (
+    <div
+      class="star"
+      style={{
+        top: `${star.top}%`,
+        left: `${star.left}%`,
+        width: `${star.size}px`,
+        height: `${star.size}px`,
+        opacity: star.opacity,
+        animationDuration: `${star.duration}s`,
+        animationDelay: `${star.delay}s`,
+      }}
+    />
+  ))}
+</div>
+
+<script is:inline>
+  document.addEventListener("DOMContentLoaded", () => {
+    const area = document.getElementById("stars-area");
+    if (!area) return;
+
+    function createShootingStar(type) {
+      const star = document.createElement("div");
+      star.className = `shooting-star${type ? " " + type : ""}`;
+      area.appendChild(star);
+      star.addEventListener("animationend", () => {
+        star.remove();
+      });
+    }
+
+    function scheduleShootingStar(type) {
+      let delay;
+      switch (type) {
+        case "higher":
+          delay = (Math.random() * 10 + 8) * 1000;
+          break;
+        case "high":
+          delay = (Math.random() * 8 + 6) * 1000;
+          break;
+        default:
+          delay = (Math.random() * 6 + 4) * 1000;
+          break;
+      }
+
+      setTimeout(() => {
+        createShootingStar(type);
+        scheduleShootingStar(type); // Reschedule the next one
+      }, delay);
+    }
+
+    // Start the loops
+    scheduleShootingStar("");
+    scheduleShootingStar("high");
+    scheduleShootingStar("higher");
+  });
+</script>

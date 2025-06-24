@@ -1,0 +1,23 @@
+@use "sass:meta";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  @include meta.load-css("base");
+}
+
+@layer components {
+  @include meta.load-css("components");
+  @include meta.load-css("navigation");
+  @include meta.load-css("buttons");
+}
+
+@layer utilities {
+  @include meta.load-css("utilities");
+}
+
+body {
+  background: url('/images/internacional/re dimensionada_1749659730761.png') no-repeat center center fixed;
+  background-size: cover;
+}

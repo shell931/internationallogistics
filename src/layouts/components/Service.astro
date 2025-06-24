@@ -1,0 +1,53 @@
+---
+import { Image } from "astro:assets";
+
+const { service } = Astro.props;
+const { our_service = [], service_list } = service || {};
+const leftServices = our_service.slice(0, 2);
+const rightServices = our_service.slice(2, 4);
+---
+
+<section class="section service py-20">
+  <div class="container">
+    <div class="grid grid-cols-1 items-center gap-10 lg:grid-cols-3 lg:gap-16">
+      <!-- Left Column -->
+      <div class="flex flex-col gap-10">
+        {leftServices.map((item: any) => (
+          <div class="h-full rounded-lg border border-white/10 bg-white/5 p-6 text-white shadow-lg backdrop-blur-md">
+            <h3 class="mb-2 text-center text-lg font-bold">{item.title}</h3>
+            <p class="text-center text-sm font-light text-white/70">
+              {item.description}
+            </p>
+          </div>
+        ))}
+      </div>
+
+      <!-- Center Image -->
+      <div class="order-first flex justify-center lg:order-none">
+        {
+          service_list && (
+            <Image
+              class="w-full max-w-[200px] sm:max-w-[350px]"
+              alt="service"
+              width={300}
+              height={300}
+              src={service_list.central_image}
+            />
+          )
+        }
+      </div>
+
+      <!-- Right Column -->
+      <div class="flex flex-col gap-10">
+        {rightServices.map((item: any) => (
+          <div class="h-full rounded-lg border border-white/10 bg-white/5 p-6 text-white shadow-lg backdrop-blur-md">
+            <h3 class="mb-2 text-center text-lg font-bold">{item.title}</h3>
+            <p class="text-center text-sm font-light text-white/70">
+              {item.description}
+            </p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

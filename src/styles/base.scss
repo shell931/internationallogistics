@@ -1,0 +1,114 @@
+html {
+  @apply text-base;
+}
+
+body {
+  /* Fondo degradado radial azul oscuro y cuadrícula sutil */
+  background:
+    radial-gradient(ellipse at 80% 0%, #223a7a 0%, #1a1a1a 40%, #111 100%),
+    repeating-linear-gradient(0deg, rgba(255,255,255,0.02) 0px, rgba(255,255,255,0.02) 1px, transparent 1px, transparent 40px),
+    repeating-linear-gradient(90deg, rgba(255,255,255,0.02) 0px, rgba(255,255,255,0.02) 1px, transparent 1px, transparent 40px);
+  font-family: var(--font-primary);
+  font-weight: normal;
+  line-height: 1.6;
+  color: var(--color-text);
+  min-height: 100vh;
+  position: relative;
+}
+
+body::before, body::after {
+  content: "";
+  position: fixed;
+  pointer-events: none;
+  z-index: 0;
+}
+body::before {
+  top: -10%;
+  right: -10%;
+  width: 50vw;
+  height: 50vw;
+  background: radial-gradient(circle, #223a7a 0%, transparent 70%);
+  opacity: 0.35;
+}
+body::after {
+  bottom: -10%;
+  left: -10%;
+  width: 40vw;
+  height: 40vw;
+  background: radial-gradient(circle, #12181f 0%, transparent 70%);
+  opacity: 0.22;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  @apply mb-4 font-secondary font-bold leading-tight text-dark dark:text-white;
+}
+
+h1,
+.h1 {
+  @apply text-h1-sm md:text-h1;
+}
+
+h2,
+.h2 {
+  @apply text-h2-sm md:text-h2;
+}
+
+h3,
+.h3 {
+  @apply text-h3-sm md:text-h3;
+}
+
+h4,
+.h4 {
+  @apply text-h4;
+}
+
+h5,
+.h5 {
+  @apply text-h5;
+}
+
+h6,
+.h6 {
+  @apply text-h6;
+}
+
+/* Efecto shrink para el banner al hacer scroll */
+.banner-shrink {
+  min-height: 80px !important;
+  padding-top: 0.5rem !important;
+  background: #000 !important;
+  box-shadow: 0 2px 16px 0 rgba(0,0,0,0.12);
+  opacity: 0.98;
+  transition: all 0.10s ease-in-out;
+}
+.banner-shrink .banner-title {
+  font-size: 1.5rem !important;
+  transition: font-size 0.10s ease-in-out;
+}
+
+.mouse-indicator {
+  width: 32px;
+  height: 54px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 70px;
+}
+.mouse-dot {
+  animation: mouse-scroll 1.2s infinite cubic-bezier(0.4,0,0.2,1);
+}
+@keyframes mouse-scroll {
+  0% { opacity: 1; cy: 14; }
+  50% { opacity: 0.5; cy: 28; }
+  100% { opacity: 1; cy: 14; }
+}
+
+main {
+  @apply relative;
+}

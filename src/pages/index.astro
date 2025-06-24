@@ -1,0 +1,303 @@
+---
+import Base from "@/layouts/Base.astro";
+import Banner from "@/layouts/components/Banner.astro";
+import KeyFeatures from "@/layouts/components/KeyFeatures.astro";
+import Testimonial from "@/layouts/components/Testimonial.astro";
+import Service from "@/layouts/components/Service.astro";
+import Cta from "@/layouts/partials/Cta.astro";
+import { getEntryBySlug } from "astro:content";
+
+const homepage = await getEntryBySlug("homepage", "index");
+const { banner, key_features, service, testimonial } = homepage.data;
+---
+
+<Base>
+  <!-- banner -->
+  <Banner banner={banner} />
+
+  <!-- sección de soluciones logísticas 360° -->
+  <section class="w-full flex justify-center items-center relative z-10" style="margin-top:-120px;">
+    <div class="w-full max-w-6xl px-4">
+      <div class="rounded-2xl shadow-xl p-8 md:p-12 flex flex-col items-center" style="background:rgba(24,130,156,0.92);backdrop-filter:blur(2px);">
+        <h2 class="text-white text-3xl md:text-4xl font-bold mb-10 text-center drop-shadow-lg">Especialistas en Soluciones Logísticas 360°</h2>
+        <div class="w-full grid grid-cols-1 md:grid-cols-4 gap-6">
+          <!-- Card 1 -->
+          <div class="bg-white/95 rounded-xl p-6 flex flex-col items-center shadow-md">
+            <div class="bg-white shadow-lg rounded-full w-16 h-16 flex items-center justify-center -mt-12 mb-4">
+              <svg xmlns='http://www.w3.org/2000/svg' class='h-8 w-8 text-[#18829c]' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2.5 19.5L21.5 19.5M2.5 19.5L6.5 5.5M21.5 19.5L17.5 5.5M6.5 5.5L12 8.5L17.5 5.5' /></svg>
+            </div>
+            <h3 class="text-white text-lg font-bold mb-2 text-center drop-shadow" style="color: black">Carga Aérea</h3>
+            <p class="text-gray-700 text-sm text-center">Servicio especializado en el envío de mercancías por vía aérea, ideal para carga urgente, perecedera o de alto valor.</p>
+          </div>
+          <!-- Card 2 -->
+          <div class="bg-white/95 rounded-xl p-6 flex flex-col items-center shadow-md">
+            <div class="bg-white shadow-lg rounded-full w-16 h-16 flex items-center justify-center -mt-12 mb-4">
+              <svg xmlns='http://www.w3.org/2000/svg' class='h-8 w-8 text-[#18829c]' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M3 21V7a2 2 0 012-2h14a2 2 0 012 2v14M3 21h18M3 21l9-6 9 6' /></svg>
+            </div>
+            <h3 class="text-white text-lg font-bold mb-2 text-center drop-shadow" style="color: black">Carga Marítima</h3>
+            <p class="text-gray-700 text-sm text-center">Transporte para carga oceánica para cargas FCL, LCL, Cargas Peligrosas y Proyectos especiales con orígenes en todo el mundo.</p>
+          </div>
+          <!-- Card 3 -->
+          <div class="bg-white/95 rounded-xl p-6 flex flex-col items-center shadow-md">
+            <div class="bg-white shadow-lg rounded-full w-16 h-16 flex items-center justify-center -mt-12 mb-4">
+              <svg xmlns='http://www.w3.org/2000/svg' class='h-8 w-8 text-[#18829c]' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M3 17V7a2 2 0 012-2h14a2 2 0 012 2v10M3 17h18M3 17l9-5 9 5' /></svg>
+            </div>
+            <h3 class="text-white text-lg font-bold mb-2 text-center drop-shadow" style="color: black">Carga Terrestre</h3>
+            <p class="text-gray-700 text-sm text-center">Transporte terrestre nacional desde y hacia puertos, para cargas FCL, LCL y Expresos.</p>
+          </div>
+          <!-- Card 4 -->
+          <div class="bg-white/95 rounded-xl p-6 flex flex-col items-center shadow-md">
+            <div class="bg-white shadow-lg rounded-full w-16 h-16 flex items-center justify-center -mt-12 mb-4">
+              <svg xmlns='http://www.w3.org/2000/svg' class='h-8 w-8 text-[#18829c]' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M4 4h16v16H4V4zm4 4h8v8H8V8z' /></svg>
+            </div>
+            <h3 class="text-white text-lg font-bold mb-2 text-center drop-shadow" style="color: black">Envíos Postales</h3>
+            <p class="text-gray-700 text-sm text-center">Servicio rápido y económico para envíos postales nacionales e internacionales por vía aérea. Ideal para paquetes pequeños, documentos y mercancías ligeras.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- sección portafolio -->
+  <section class="w-full flex justify-center items-center relative z-10 mt-16">
+    <div class="w-full max-w-6xl px-4">
+      <div class="rounded-2xl shadow-xl p-8 md:p-12 flex flex-col items-center" style="background:rgba(24,130,156,0.92);backdrop-filter:blur(2px);">
+        <h2 class="text-white text-3xl md:text-4xl font-bold mb-10 text-center drop-shadow-lg">Nuestro Portafolio</h2>
+        <div class="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+          <!-- Card 1 -->
+          <div class="rounded-xl overflow-hidden shadow-md group border border-white/40">
+            <div class="relative w-full h-40">
+              <img src="/images/internacional/ChatGPT Image 7 jun 2025, 13_38_50_1749321589752.png" alt="Importaciones" class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-300" />
+              <div class="absolute inset-0 bg-black/30"></div>
+              <span class="absolute bottom-3 left-0 w-full text-center text-white font-bold text-lg drop-shadow-lg">Importaciones</span>
+            </div>
+          </div>
+          <!-- Card 2 -->
+          <div class="rounded-xl overflow-hidden shadow-md group border border-white/40">
+            <div class="relative w-full h-40">
+              <img src="/images/internacional/image_1749322682219.png" alt="Exportaciones" class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-300" />
+              <div class="absolute inset-0 bg-black/30"></div>
+              <span class="absolute bottom-3 left-0 w-full text-center text-white font-bold text-lg drop-shadow-lg">Exportaciones</span>
+            </div>
+          </div>
+          <!-- Card 3 -->
+          <div class="rounded-xl overflow-hidden shadow-md group border border-white/40">
+            <div class="relative w-full h-40">
+              <img src="/images/internacional/image_1749323212766.png" alt="Operaciones en Zona Franca" class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-300" />
+              <div class="absolute inset-0 bg-black/30"></div>
+              <span class="absolute bottom-3 left-0 w-full text-center text-white font-bold text-lg drop-shadow-lg">Operaciones en Zona Franca</span>
+            </div>
+          </div>
+          <!-- Card 4 -->
+          <div class="rounded-xl overflow-hidden shadow-md group border border-white/40">
+            <div class="relative w-full h-40">
+              <img src="/images/internacional/image_1749323880302.png" alt="Tránsitos Aduaneros" class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-300" />
+              <div class="absolute inset-0 bg-black/30"></div>
+              <span class="absolute bottom-3 left-0 w-full text-center text-white font-bold text-lg drop-shadow-lg">Tránsitos Aduaneros</span>
+            </div>
+          </div>
+          <!-- Card 5 -->
+          <div class="rounded-xl overflow-hidden shadow-md group border border-white/40">
+            <div class="relative w-full h-40">
+              <img src="/images/internacional/image_1749324091911.png" alt="Transporte Nacional" class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-300" />
+              <div class="absolute inset-0 bg-black/30"></div>
+              <span class="absolute bottom-3 left-0 w-full text-center text-white font-bold text-lg drop-shadow-lg">Transporte Nacional</span>
+            </div>
+          </div>
+          <!-- Card 6 -->
+          <div class="rounded-xl overflow-hidden shadow-md group border border-white/40">
+            <div class="relative w-full h-40">
+              <img src="/images/internacional/image_1749325563847.png" alt="Envíos Urgentes" class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-300" />
+              <div class="absolute inset-0 bg-black/30"></div>
+              <span class="absolute bottom-3 left-0 w-full text-center text-white font-bold text-lg drop-shadow-lg">Envíos Urgentes</span>
+            </div>
+          </div>
+          <!-- Card 7 -->
+          <div class="rounded-xl overflow-hidden shadow-md group border border-white/40">
+            <div class="relative w-full h-40">
+              <img src="/images/internacional/image_1749337806214.png" alt="Aseguramiento de Carga" class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-300" />
+              <div class="absolute inset-0 bg-black/30"></div>
+              <span class="absolute bottom-3 left-0 w-full text-center text-white font-bold text-lg drop-shadow-lg">Aseguramiento de Carga</span>
+            </div>
+          </div>
+          <!-- Card 8 -->
+          <div class="rounded-xl overflow-hidden shadow-md group border border-white/40">
+            <div class="relative w-full h-40">
+              <img src="/images/internacional/image_1749338496956.png" alt="Operaciones Proyectos Especiales" class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-300" />
+              <div class="absolute inset-0 bg-black/30"></div>
+              <span class="absolute bottom-3 left-0 w-full text-center text-white font-bold text-lg drop-shadow-lg">Operaciones Proyectos Especiales</span>
+            </div>
+          </div>
+          <!-- Card 9 -->
+          <div class="rounded-xl overflow-hidden shadow-md group border border-white/40">
+            <div class="relative w-full h-40">
+              <img src="/images/internacional/image_1749340081876.png" alt="Asesoría Aduanera" class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-300" />
+              <div class="absolute inset-0 bg-black/30"></div>
+              <span class="absolute bottom-3 left-0 w-full text-center text-white font-bold text-lg drop-shadow-lg">Asesoría Aduanera</span>
+            </div>
+          </div>
+          <!-- Card 10 -->
+          <div class="rounded-xl overflow-hidden shadow-md group border border-white/40">
+            <div class="relative w-full h-40">
+              <img src="/images/internacional/image_1749342738781.png" alt="Asesoría Cambiaria" class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-300" />
+              <div class="absolute inset-0 bg-black/30"></div>
+              <span class="absolute bottom-3 left-0 w-full text-center text-white font-bold text-lg drop-shadow-lg">Asesoría Cambiaria</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- sección quiénes somos -->
+  <section class="w-full flex justify-center items-center relative z-10 mt-16">
+    <div class="w-full max-w-6xl px-4">
+      <div class="rounded-2xl shadow-xl p-8 md:p-12 flex flex-col md:flex-row items-center justify-between gap-8" style="background:rgba(24,130,156,0.92);backdrop-filter:blur(2px);">
+        <div class="flex-1 text-white">
+          <h2 class="text-3xl md:text-4xl font-bold mb-4 drop-shadow-lg">¿Quiénes somos?</h2>
+          <p class="mb-6 text-base md:text-lg font-normal">El puente entre tu negocio y el mundo, revolucionando tu cadena de suministro con soluciones logísticas, donde cada envío recibe un trato prioritario.</p>
+          <h3 class="text-2xl font-bold mb-2 drop-shadow">Nuestra fórmula</h3>
+          <p class="mb-6 text-base md:text-lg font-normal">Planeación y visión predictiva ante posibles riesgos + Red global de aliados tácticos + Equipo humano especializado que actúa como extensión de tu operación.</p>
+          <h3 class="text-2xl font-bold mb-2 drop-shadow">Ventaja Competitiva</h3>
+          <p class="text-base md:text-lg font-normal">Garantizar que tus cargas lleguen con precisión de misión crítica, reduciendo costos y superando expectativas, porque tu éxito navega bajo nuestra bandera.</p>
+        </div>
+        <div class="flex-1 flex justify-center items-center">
+          <img src="/images/internacional/image_1749341958107.png" alt="Quiénes somos" class="rounded-full object-cover w-64 h-64 shadow-lg border-4 border-white/30" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- sección estadísticas -->
+  <section class="w-full bg-[#18829c] py-12 flex justify-center items-center mt-20">
+    <div class="w-full max-w-7xl flex flex-col md:flex-row justify-around items-center gap-10 md:gap-0 px-4">
+      <!-- Stat 1 -->
+      <div class="flex flex-col items-center">
+        <div class="mb-3">
+          <svg width="64" height="64" fill="none" viewBox="0 0 64 64"><circle cx="32" cy="32" r="32" fill="#fff" fill-opacity="0.18"/><path d="M32 12a20 20 0 1 0 0 40 20 20 0 0 0 0-40Zm0 36a16 16 0 1 1 0-32 16 16 0 0 1 0 32Zm0-28a12 12 0 0 0-12 12h12V20Zm4 16V32h12a12 12 0 0 0-12-12v12Z" fill="#fff"/></svg>
+        </div>
+        <div class="text-3xl font-bold text-white">50+</div>
+        <div class="text-white text-base mt-1">Orígenes y Destinos en todo el mundo</div>
+      </div>
+      <!-- Stat 2 -->
+      <div class="flex flex-col items-center">
+        <div class="mb-3">
+          <svg width="64" height="64" fill="none" viewBox="0 0 64 64"><rect x="12" y="16" width="40" height="32" rx="4" fill="#fff" fill-opacity="0.18"/><rect x="20" y="28" width="24" height="8" rx="2" fill="#fff"/><rect x="28" y="36" width="8" height="4" rx="2" fill="#fff"/></svg>
+        </div>
+        <div class="text-3xl font-bold text-white">10K+</div>
+        <div class="text-white text-base mt-1">Envíos Mensuales</div>
+      </div>
+      <!-- Stat 3 -->
+      <div class="flex flex-col items-center">
+        <div class="mb-3">
+          <svg width="64" height="64" fill="none" viewBox="0 0 64 64"><circle cx="32" cy="32" r="32" fill="#fff" fill-opacity="0.18"/><circle cx="32" cy="32" r="20" stroke="#fff" stroke-width="4"/><path d="M32 20v12l8 8" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="text-3xl font-bold text-white">24/7</div>
+        <div class="text-white text-base mt-1">Soporte al Cliente</div>
+      </div>
+      <!-- Stat 4 -->
+      <div class="flex flex-col items-center">
+        <div class="mb-3">
+          <svg width="64" height="64" fill="none" viewBox="0 0 64 64"><circle cx="32" cy="32" r="32" fill="#fff" fill-opacity="0.18"/><path d="M24 32l8 8 12-12" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><circle cx="32" cy="32" r="20" stroke="#fff" stroke-width="4"/></svg>
+        </div>
+        <div class="text-3xl font-bold text-white">99.8%</div>
+        <div class="text-white text-base mt-1">Entrega a Tiempo</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- key features -->
+  <!-- <KeyFeatures key_features={key_features} /> -->
+  <!-- service -->
+  <!-- <Service service={service} /> -->
+  <!-- call to action -->
+  <!-- <Cta /> -->
+
+  <!-- sección contáctanos -->
+  <section class="w-full flex justify-center items-center relative z-10 mt-20">
+    <div class="w-full max-w-6xl px-4">
+      <div class="rounded-2xl shadow-xl p-8 md:p-12 flex flex-col items-center" style="background:rgba(24,130,156,0.92);backdrop-filter:blur(2px);">
+        <h2 class="text-white text-3xl md:text-4xl font-bold mb-10 text-center drop-shadow-lg">Contáctanos</h2>
+        <div class="w-full flex flex-col md:flex-row gap-8 mb-10">
+          <!-- Consulta General -->
+          <form class="flex-1 bg-white/90 rounded-xl p-6 flex flex-col gap-4 shadow-md">
+            <h3 class="text-xl font-bold mb-1 flex items-center gap-2" style="color: black"><span>✔️</span> Consulta General</h3>
+            <p class="text-sm text-gray-700 mb-2">Déjanos tu consulta y te contestaremos en el menor tiempo posible</p>
+            <div class="flex gap-4">
+              <input type="text" placeholder="Nombre de la Empresa" class="flex-1 rounded px-3 py-2 bg-white border border-gray-300 focus:outline-none placeholder:text-sm placeholder:font-extralight" />
+              <input type="text" placeholder="Persona de Contacto" class="flex-1 rounded px-3 py-2 bg-white border border-gray-300 focus:outline-none placeholder:text-sm placeholder:font-extralight" />
+            </div>
+            <div class="flex gap-4">
+              <input type="email" placeholder="E-mail" class="flex-1 rounded px-3 py-2 bg-white border border-gray-300 focus:outline-none placeholder:text-sm placeholder:font-extralight" />
+              <input type="text" placeholder="Teléfono de contacto" class="flex-1 rounded px-3 py-2 bg-white border border-gray-300 focus:outline-none placeholder:text-sm placeholder:font-extralight" />
+            </div>
+            <textarea rows="5" placeholder="Proporciona los detalles sobre tu consulta" class="rounded px-3 py-2 bg-white border border-gray-300 focus:outline-none resize-none placeholder:text-sm placeholder:font-extralight" style="height:318px;"></textarea>
+            <button type="button" class="mt-2 bg-[#4db6c6] text-white font-semibold px-6 py-2 rounded shadow hover:bg-[#18829c] transition">➤ Enviar Mensaje</button>
+          </form>
+          <!-- Solicitar Cotización -->
+          <form class="flex-1 bg-white/90 rounded-xl p-6 flex flex-col gap-4 shadow-md">
+            <h3 class="text-xl font-bold mb-1 flex items-center gap-2" style="color: black"><span>📄</span> Solicitar Cotización</h3>
+            <p class="text-sm text-gray-700 mb-2">Obtén una cotización personalizada para tu operación de comercio exterior</p>
+            <div class="flex gap-4">
+              <input type="text" placeholder="Nombre de la Empresa" class="flex-1 rounded px-3 py-2 bg-white border border-gray-300 focus:outline-none placeholder:text-sm placeholder:font-extralight" />
+              <input type="text" placeholder="Persona de Contacto" class="flex-1 rounded px-3 py-2 bg-white border border-gray-300 focus:outline-none placeholder:text-sm placeholder:font-extralight" />
+            </div>
+            <div class="flex gap-4">
+              <input type="email" placeholder="E-mail" class="flex-1 rounded px-3 py-2 bg-white border border-gray-300 focus:outline-none placeholder:text-sm placeholder:font-extralight" />
+              <input type="text" placeholder="Teléfono de contacto" class="flex-1 rounded px-3 py-2 bg-white border border-gray-300 focus:outline-none placeholder:text-sm placeholder:font-extralight" />
+            </div>
+            <div class="flex gap-4">
+              <input type="text" placeholder="Medio de Transporte" class="flex-1 rounded px-3 py-2 bg-white border border-gray-300 focus:outline-none placeholder:text-sm placeholder:font-extralight" />
+              <input type="text" placeholder="Servicio" class="flex-1 rounded px-3 py-2 bg-white border border-gray-300 focus:outline-none placeholder:text-sm placeholder:font-extralight" />
+            </div>
+            <div class="flex gap-4">
+              <input type="text" placeholder="Embalaje de carga" class="flex-1 rounded px-3 py-2 bg-white border border-gray-300 focus:outline-none placeholder:text-sm placeholder:font-extralight" />
+              <input type="text" placeholder="INCOTERM" class="flex-1 rounded px-3 py-2 bg-white border border-gray-300 focus:outline-none placeholder:text-sm placeholder:font-extralight" />
+            </div>
+            <div class="flex gap-4">
+              <input type="text" placeholder="Lugar de Destino" class="flex-1 rounded px-3 py-2 bg-white border border-gray-300 focus:outline-none placeholder:text-sm placeholder:font-extralight" />
+              <input type="text" placeholder="Lugar de Origen" class="flex-1 rounded px-3 py-2 bg-white border border-gray-300 focus:outline-none placeholder:text-sm placeholder:font-extralight" />
+            </div>
+            <div class="flex gap-4">
+              <input type="text" placeholder="Peso bruto de la carga" class="flex-1 rounded px-3 py-2 bg-white border border-gray-300 focus:outline-none placeholder:text-sm placeholder:font-extralight" />
+              <input type="text" placeholder="Cubicaje de la carga" class="flex-1 rounded px-3 py-2 bg-white border border-gray-300 focus:outline-none placeholder:text-sm placeholder:font-extralight" />
+            </div>
+            <textarea rows="3" placeholder="Descripción de la mercancía, incluyendo el producto, valor de la carga, etc" class="rounded px-3 py-2 bg-white border border-gray-300 focus:outline-none resize-none placeholder:text-sm placeholder:font-extralight"></textarea>
+            <button type="button" class="mt-2 bg-[#4db6c6] text-white font-semibold px-6 py-2 rounded shadow hover:bg-[#18829c] transition">📋 Solicitar Cotización</button>
+          </form>
+        </div>
+        <!-- Círculos de contacto -->
+        <div class="w-full flex flex-col md:flex-row justify-center items-center gap-6 mt-4">
+          <div class="flex flex-col items-center">
+            <div class="bg-white/90 rounded-full w-28 h-28 flex items-center justify-center mb-2 shadow">
+              <span class="text-4xl">🟢</span>
+            </div>
+            <div class="font-bold text-lg text-white">WhatsApp</div>
+            <div class="text-white text-sm">+57 318 276 9279</div>
+          </div>
+          <div class="flex flex-col items-center">
+            <div class="bg-white/90 rounded-full w-28 h-28 flex items-center justify-center mb-2 shadow">
+              <span class="text-4xl">✉️</span>
+            </div>
+            <div class="font-bold text-lg text-white">E-mail</div>
+            <div class="text-white text-sm">deluxecargo@gmail.com</div>
+          </div>
+          <div class="flex flex-col items-center">
+            <div class="bg-white/90 rounded-full w-28 h-28 flex items-center justify-center mb-2 shadow">
+              <span class="text-4xl">🔗</span>
+            </div>
+            <div class="font-bold text-lg text-white">LinkedIn</div>
+            <div class="text-white text-sm">Deluxe Cargo</div>
+          </div>
+          <div class="flex flex-col items-center">
+            <div class="bg-white/90 rounded-full w-28 h-28 flex items-center justify-center mb-2 shadow">
+              <span class="text-4xl">📸</span>
+            </div>
+            <div class="font-bold text-lg text-white">Instagram</div>
+            <div class="text-white text-sm">@deluxecargo</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Base>

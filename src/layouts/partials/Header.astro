@@ -1,0 +1,67 @@
+---
+import Logo from "@/components/Logo.astro";
+import menu from "@/config/menu.json";
+
+export interface ChildNavigationLink {
+  name: string;
+  url: string;
+}
+
+export interface NavigationLink {
+  name: string;
+  url: string;
+  hasChildren?: boolean;
+  children?: ChildNavigationLink[];
+}
+
+const { main }: { main: NavigationLink[] } = menu;
+const { pathname } = Astro.url;
+---
+
+<header class="header">
+  <nav class="navbar">
+    <div class="max-w-7xl mx-auto w-full flex items-center justify-between" style="padding-top:0.5rem;padding-bottom:0.5rem;">
+      <!-- Logo Deluxe Cargo -->
+      <div class="flex items-center">
+        <img src="/images/internacional/image_1749593287092.png" alt="Deluxe Cargo" style="height:32px;width:32px;margin-right:8px;" />
+        <span class="text-white font-semibold text-base flex items-center">
+          Deluxe Cargo
+        </span>
+      </div>
+      <!-- Menú principal -->
+      <ul class="flex space-x-2">
+        <li><a href="/" class="text-white px-3 py-1 rounded hover:bg-white/10 text-sm transition">Inicio</a></li>
+        <li><a href="/services" class="text-white px-3 py-1 rounded hover:bg-white/10 text-sm transition">Servicios</a></li>
+        <li><a href="/about" class="text-white px-3 py-1 rounded hover:bg-white/10 text-sm transition">Nosotros</a></li>
+        <li><a href="/contact" class="text-white px-3 py-1 rounded hover:bg-white/10 text-sm transition">Contacto</a></li>
+      </ul>
+    </div>
+  </nav>
+</header>
+
+<style is:global>
+
+</style>
+
+<script is:inline>
+  document.querySelectorAll(".dropdown-button").forEach((button) => {
+    button.addEventListener("click", (e) => {
+      const dropdown = e.target.nextElementSibling;
+      dropdown.classList.toggle(
+        dropdown.style === "hidden" ? "block" : "hidden"
+      );
+    });
+  });
+
+  //sticky header
+  document.addEventListener("astro:page-load", () => {
+    const header = document.querySelector(".header");
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 0) {
+        header.classList.add("header-sticky");
+      } else {
+        header.classList.remove("header-sticky");
+      }
+    });
+  });
+</script>

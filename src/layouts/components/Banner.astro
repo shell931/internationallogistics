@@ -1,0 +1,40 @@
+---
+import { markdownify } from "@/lib/utils/textConverter";
+import { Image } from "astro:assets";
+import Stars from "./Stars.astro";
+const { banner } = Astro.props;
+const { title, button, image, content } = banner;
+---
+
+<style is:global>
+  .mouse-dot {
+    animation: mouse-scroll 1.5s ease-in-out infinite;
+  }
+
+  @keyframes mouse-scroll {
+    0% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    50% {
+      transform: translateY(8px);
+      opacity: 0.5;
+    }
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+</style>
+
+<section
+  id="main-banner"
+  class="w-full min-h-screen flex flex-col justify-center items-center relative"
+  style="background: url('/images/banner-deluxe-cargo.jpg') center center / cover no-repeat;"
+>
+  <div class="absolute inset-0 bg-black/30"></div>
+  <div class="relative z-10 flex flex-col items-center justify-center w-full h-full" style="min-height: 60vh;">
+    <h1 class="text-white text-5xl md:text-7xl font-extrabold drop-shadow-lg mb-4" style="letter-spacing:2px;">DELUXE CARGO</h1>
+    <p class="text-white text-xl md:text-2xl font-medium drop-shadow-md tracking-wide">International Freight Forwarder</p>
+  </div>
+</section>
